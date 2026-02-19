@@ -10,7 +10,7 @@ import {
 // ==========================================
 // 1. 產品行銷首頁 (Landing Page)
 // ==========================================
-const LandingPage = ({ onNavigate }) => {
+const LandingPage = ({ onNavigate }: any) => {
   return (
     <div className="min-h-screen bg-slate-900 font-sans text-slate-100 overflow-x-hidden">
       {/* 導覽列 */}
@@ -139,7 +139,7 @@ const LandingPage = ({ onNavigate }) => {
 // ==========================================
 // 2. 業者後台控制台 (Dashboard)
 // ==========================================
-const DashboardComponent = ({ onNavigate }) => {
+const DashboardComponent = ({ onNavigate }: any) => {
   const [config, setConfig] = useState({
     isActive: true, 
     isLineConnected: true,
@@ -164,9 +164,9 @@ const DashboardComponent = ({ onNavigate }) => {
   ]);
   const [inputMessage, setInputMessage] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value, type, checked } = e.target;
-    setConfig(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    setConfig((prev: any) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
   const handleSave = () => {
@@ -178,7 +178,7 @@ const DashboardComponent = ({ onNavigate }) => {
     }, 1200);
   };
 
-  const simulateAIResponse = (question) => {
+  const simulateAIResponse = (question: string) => {
     let response = "";
     const q = question.toLowerCase();
 
@@ -201,7 +201,7 @@ const DashboardComponent = ({ onNavigate }) => {
     return response;
   };
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = (e: any) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
     const newHistory = [...chatHistory, { role: 'user', content: inputMessage }];
@@ -407,7 +407,7 @@ const DashboardComponent = ({ onNavigate }) => {
 
                   <form onSubmit={handleSendMessage} className="bg-white p-2.5 flex items-center space-x-2 rounded-b-3xl border-t border-slate-100 pb-4">
                     <input 
-                      type="text" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)}
+                      type="text" value={inputMessage} onChange={(e: any) => setInputMessage(e.target.value)}
                       placeholder="測試發問 (如: 早餐吃什麼?)"
                       className="flex-1 bg-slate-100 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                     />
